@@ -1,0 +1,29 @@
+<!-- main app container -->
+<div class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h3>Angular 6 Custom Form Validation</h3>
+				<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<div class="form-group">
+						<label>Password</label>
+            <input type="text" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Compare Password</label>
+            <input type="text" formControlName="comparepassword" class="form-control" [ngClass]="{ 'is-invalid': f.comparepassword.errors }" />
+            <div *ngIf="f.comparepassword.errors" class="invalid-feedback">
+                <div *ngIf="f.comparepassword.errors.matchPassword">Password not match</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
